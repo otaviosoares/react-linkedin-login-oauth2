@@ -52,8 +52,12 @@ export class LinkedIn extends Component {
 
 
   render() {
-    const { className, disabled, children } = this.props;
-    return (
+    const { className, disabled, render, children } = this.props;
+
+    return render ? render({
+      handleConnect: this.handleConnectLinkedInClick,
+      disabled: disabled
+    }) : (
       <button
         type="button"
         onClick={this.handleConnectLinkedInClick}
